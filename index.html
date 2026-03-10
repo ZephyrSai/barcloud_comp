@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BarCloud Analysis</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f1117;color:#e2e8f0;line-height:1.6}
+  .hero{background:linear-gradient(135deg,#1e3a5f 0%,#0d2137 50%,#1a1a2e 100%);padding:2.5rem 2rem 2rem;border-bottom:1px solid #2d4a6e}
+  .hero h1{font-size:2rem;font-weight:800;color:#60a5fa;letter-spacing:-0.5px}
+  .hero p{color:#94a3b8;margin-top:.4rem;font-size:.95rem}
+  .badge{display:inline-block;background:#1e3a5f;color:#60a5fa;border:1px solid #2d4a6e;border-radius:20px;padding:.2rem .8rem;font-size:.75rem;font-weight:600;margin-top:.6rem}
+  nav{display:flex;gap:.5rem;padding:1rem 2rem;background:#0d1117;border-bottom:1px solid #1e2d3d;flex-wrap:wrap}
+  nav button{background:#1e2d3d;border:1px solid #2d4a6e;color:#94a3b8;padding:.4rem 1rem;border-radius:20px;cursor:pointer;font-size:.82rem;transition:all .2s}
+  nav button.active,nav button:hover{background:#1e3a5f;color:#60a5fa;border-color:#3b82f6}
+  .section{display:none;padding:1.5rem 2rem 2.5rem;animation:fade .3s ease}
+  .section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  h2{font-size:1.2rem;font-weight:700;color:#60a5fa;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+  h3{font-size:1rem;font-weight:600;color:#93c5fd;margin:.8rem 0 .4rem}
+  /* tables */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid #1e2d3d}
+  table{width:100%;border-collapse:collapse;font-size:.82rem}
+  thead{background:#1e3a5f}
+  th{padding:.65rem .8rem;text-align:left;color:#93c5fd;font-weight:600;white-space:nowrap}
+  td{padding:.6rem .8rem;border-top:1px solid #1a2535;vertical-align:top}
+  tr:hover td{background:#111827}
+  .cat-row td{background:#0d2137;color:#60a5fa;font-weight:700;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase}
+  /* tags */
+  .tag{display:inline-block;border-radius:4px;padding:.1rem .45rem;font-size:.7rem;font-weight:600;white-space:nowrap}
+  .tag-usp{background:#14532d;color:#86efac}
+  .tag-std{background:#1e3a5f;color:#93c5fd}
+  .tag-addon{background:#3b1f00;color:#fbbf24}
+  .tag-gap{background:#450a0a;color:#fca5a5}
+  /* check/cross */
+  .y{color:#4ade80;font-size:1rem}
+  .n{color:#f87171;font-size:1rem}
+  .p{color:#fbbf24;font-size:.9rem}
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+  .card{background:#111827;border:1px solid #1e2d3d;border-radius:10px;padding:1rem}
+  .card h4{font-size:.88rem;font-weight:700;color:#60a5fa;margin-bottom:.3rem}
+  .card p{font-size:.78rem;color:#94a3b8}
+  .usp-card{border-color:#1e4a2e}
+  .gap-card{border-color:#4a1e1e}
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;font-size:.75rem}
+  .legend-item{display:flex;align-items:center;gap:.3rem}
+  .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>BarCloud by ASAP Systems</h1>
+  <p>Cloud-based Inventory Management + Asset Tracking — unified in one platform</p>
+  <span class="badge">Inventory Control</span>
+  <span class="badge">Asset Tracking</span>
+  <span class="badge">Enterprise &amp; SMB</span>
+</div>
+<nav>
+  <button class="active" onclick="show('overview',this)">📦 Overview</button>
+  <button onclick="show('features',this)">🔧 Full Feature Table</button>
+  <button onclick="show('compare',this)">⚔️ Competitor Comparison</button>
+  <button onclick="show('usps',this)">🏆 USPs &amp; Gaps</button>
+</nav>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section active">
+  <h2>🏢 What is BarCloud?</h2>
+  <p style="color:#cbd5e1;font-size:.9rem;max-width:780px;margin-bottom:1.2rem">
+    BarCloud (by ASAP Systems) is a <strong style="color:#e2e8f0">cloud-based inventory management and asset tracking platform</strong> built for organizations of all sizes — from small businesses to global enterprises. Its defining trait is combining inventory control and asset tracking in a single system, a capability most competitors split across two separate products.
+  </p>
+  <div class="cards">
+    <div class="card"><h4>🎯 Target Market</h4><p>SMBs to large enterprises. Government, education, IT, healthcare, logistics, military, manufacturing</p></div>
+    <div class="card"><h4>☁️ Deployment</h4><p>Cloud-hosted, self-hosted, or on-premise. Flexible for any IT infrastructure requirement</p></div>
+    <div class="card"><h4>📱 Mobile</h4><p>iOS &amp; Android apps. Back camera doubles as barcode scanner. Voice control feature available</p></div>
+    <div class="card"><h4>💰 Pricing</h4><p>From ~$45/user/month (billed annually). Lite, Standard, and Professional tiers. Custom enterprise quotes</p></div>
+    <div class="card"><h4>🔗 Key Integrations</h4><p>QuickBooks Online, Box, Google Workspace, Active Directory, SAML, Zapier, public API</p></div>
+    <div class="card"><h4>🤖 AI Features</h4><p>BarCloud AI: demand forecasting, inventory optimization, conversational interface for reports &amp; actions</p></div>
+  </div>
+</div>
+
+<!-- FEATURES TABLE -->
+<div id="features" class="section">
+  <h2>🔧 Complete Feature Table</h2>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:#14532d"></div><span style="color:#86efac">Exclusive / USP feature</span></div>
+    <div class="legend-item"><div class="dot" style="background:#1e3a5f"></div><span style="color:#93c5fd">Standard included</span></div>
+    <div class="legend-item"><div class="dot" style="background:#3b1f00"></div><span style="color:#fbbf24">Add-on / paid extra</span></div>
+  </div>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Feature</th><th>Description</th><th>Tier</th></tr></thead>
+    <tbody>
+      <tr class="cat-row"><td colspan="3">📦 Inventory Management</td></tr>
+      <tr><td>Multi-type Inventory</td><td>Standard, serialized, serialized-with-qty, batch/lot, non-inventory</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Barcode Scanning</td><td>1D/2D barcodes; mobile camera as scanner; UPC auto-lookup from online databases</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Multi-location Tracking</td><td>Unlimited warehouses and sub-locations; map-based location viewer</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Receive / Move / Transfer</td><td>Full transaction suite with timestamps and user attribution</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Cycle Counts / Audits</td><td>Periodic or continuous stock audits with mobile support</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Purchase Orders</td><td>Create, track, and approve POs with configurable approval cycles</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Sales Orders / Picklist</td><td>Pick lists with upgraded partial-fulfill and fulfillment tracking</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Reorder Points &amp; Alerts</td><td>Configurable min/max thresholds; automated low-stock notifications</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Kitting / Assembly</td><td>Combine multiple items into one kit or assembly unit</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Inventory Breakdown</td><td>Disassemble a kit back into its individual components</td><td><span class="tag tag-addon">Add-on</span></td></tr>
+      <tr><td>Stock-to-Asset Reclassification</td><td>Instantly convert an inventory item to a tracked asset, retaining ID history</td><td><span class="tag tag-usp">USP / Exclusive</span></td></tr>
+      <tr><td>Adjust Inventory</td><td>Digital log with timestamps and notes for manual quantity adjustments</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Approval Cycles</td><td>Multi-step authorization for POs and SOs with designated approvers</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Historical Inventory Reports</td><td>Configurable reports on item lifecycle and transaction history</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Transaction Receipts</td><td>Downloadable/printable receipts for receive, pick, return, move, dispose</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>UPC Lookup</td><td>Auto-populate item data from online UPC databases during receiving</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Inventory Requisition</td><td>Users (incl. non-licensed) can browse and request inventory items</td><td><span class="tag tag-addon">Add-on</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">🏷️ Asset Tracking</td></tr>
+      <tr><td>Asset Lifecycle Management</td><td>Track from acquisition through retirement with full event history</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Check-Out / Check-In</td><td>Reserve and manage shared equipment and tools with alerts</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Maintenance Tracking</td><td>Schedule, request, and perform preventive &amp; corrective maintenance</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Calibration Requests</td><td>Asset custodians can request calibration via My Work Assets portal</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Disposal / Retirement Workflow</td><td>Formal disposal requests with audit trail</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Missing / Damaged Reporting</td><td>Users report asset issues; tracked in system with timestamps</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>My Work Assets Portal</td><td>Self-service hub for non-licensed users to view/request their assigned assets</td><td><span class="tag tag-usp">USP / Exclusive</span></td></tr>
+      <tr><td>Custody Transfer</td><td>Formal handoff process between custodians with approval</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Depreciation Tracking</td><td>Track asset financial depreciation for accounting purposes</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">🤖 AI &amp; Intelligence</td></tr>
+      <tr><td>AI Demand Forecasting</td><td>ML-based prediction to optimize inventory levels and reorder timing</td><td><span class="tag tag-usp">USP / Exclusive</span></td></tr>
+      <tr><td>Conversational AI Interface</td><td>Natural language chat to query data, run reports, and trigger actions</td><td><span class="tag tag-usp">USP / Exclusive</span></td></tr>
+      <tr><td>Usage Pattern Analysis</td><td>AI-driven insights on consumption and lifecycle trends</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">📊 Reporting &amp; Analytics</td></tr>
+      <tr><td>Configurable Dashboards</td><td>Role-specific KPI dashboards; drag-and-drop configuration</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Custom Reports</td><td>Build and schedule reports across inventory, assets, transactions</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Location Map View</td><td>Visual map showing assets/inventory by physical location</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>View Transaction History (Mobile)</td><td>Browse full transaction history (receive, move, maintenance etc.) on mobile</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">🔐 Security &amp; Access Control</td></tr>
+      <tr><td>Role-Based Access Control</td><td>Granular permissions; security groups; view-only options</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Active Directory / SSO</td><td>SAML, Google Workspace, Active Directory integration</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Multi-user Authorization</td><td>Multiple levels of approval for transactions and requests</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">📱 Mobile</td></tr>
+      <tr><td>iOS &amp; Android Apps</td><td>Full-featured mobile apps; works with iOS 6+ and Android 4+</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Camera as Barcode Scanner</td><td>Use phone camera to scan — no dedicated hardware required</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Voice Control</td><td>Voice commands for mobile inventory and asset transactions</td><td><span class="tag tag-usp">USP / Exclusive</span></td></tr>
+      <tr><td>Offline Capability</td><td>⚠️ Requires stable internet — limited offline support</td><td><span class="tag tag-gap">Limitation</span></td></tr>
+      <tr><td>Add Items Mid-Transaction</td><td>Add new inventory/assets without exiting an active transaction</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">🔗 Integrations</td></tr>
+      <tr><td>QuickBooks Online</td><td>Bi-directional sync for financials</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Box</td><td>Document storage integration</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Google Workspace</td><td>Authentication and collaboration</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Zapier</td><td>Connects to 5,000+ apps via workflow automation</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>Public API</td><td>REST API for custom ERP, finance, and reporting integrations</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>ERP Connectors</td><td>Third-party connectors for ERP and compliance platforms</td><td><span class="tag tag-std">Standard</span></td></tr>
+
+      <tr class="cat-row"><td colspan="3">☁️ Deployment &amp; Infrastructure</td></tr>
+      <tr><td>Cloud-Hosted (SaaS)</td><td>Fully managed, multi-tenant cloud deployment</td><td><span class="tag tag-std">Standard</span></td></tr>
+      <tr><td>On-Premise</td><td>Self-hosted deployment option for IT-controlled environments</td><td><span class="tag tag-usp">USP / Rare</span></td></tr>
+      <tr><td>Self-Hosted</td><td>Hybrid between cloud and on-prem; customer manages hosting</td><td><span class="tag tag-usp">USP / Rare</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div id="compare" class="section">
+  <h2>⚔️ Competitor Comparison</h2>
+  <p style="color:#64748b;font-size:.8rem;margin-bottom:1rem">Key competitors: EZOfficeInventory (EZO), AssetTiger, Asset Panda, Fishbowl, Sortly</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Feature / Capability</th>
+        <th>BarCloud</th>
+        <th>EZO (EZOfficeInventory)</th>
+        <th>AssetTiger</th>
+        <th>Asset Panda</th>
+        <th>Fishbowl</th>
+        <th>Sortly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="cat-row"><td colspan="7">Core Capability</td></tr>
+      <tr><td>Inventory Management</td><td><span class="y">✔</span> Full</td><td><span class="p">◑</span> Basic</td><td><span class="n">✘</span></td><td><span class="p">◑</span> Basic</td><td><span class="y">✔</span> Full</td><td><span class="y">✔</span> Full</td></tr>
+      <tr><td>Asset Tracking</td><td><span class="y">✔</span> Full</td><td><span class="y">✔</span> Full</td><td><span class="y">✔</span> Full</td><td><span class="y">✔</span> Full</td><td><span class="p">◑</span> Basic</td><td><span class="p">◑</span> Basic</td></tr>
+      <tr><td>Both Inv. + Asset in 1 system</td><td><span class="y">✔</span> <strong style="color:#86efac">UNIQUE</strong></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Stock-to-Asset Reclassification</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">Tracking Technology</td></tr>
+      <tr><td>Barcode Scanning</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td></tr>
+      <tr><td>RFID Support</td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="p">◑</span> Limited</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>GPS / Real-time Location</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>QR Code Support</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">AI &amp; Automation</td></tr>
+      <tr><td>AI Demand Forecasting</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Conversational AI (Chat Interface)</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Voice Control (Mobile)</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">Deployment</td></tr>
+      <tr><td>Cloud / SaaS</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="p">◑</span></td><td><span class="y">✔</span></td></tr>
+      <tr><td>On-Premise Option</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Offline Mode</td><td><span class="n">✘</span></td><td><span class="p">◑</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="p">◑</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">Reservations &amp; Checkout</td></tr>
+      <tr><td>Equipment Check-Out/In</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="p">◑</span></td></tr>
+      <tr><td>Recurring Reservations</td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Reservation Carts / Bundles</td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">Integrations</td></tr>
+      <tr><td>QuickBooks Integration</td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="p">◑</span></td><td><span class="y">✔</span> Deep</td><td><span class="n">✘</span></td></tr>
+      <tr><td>Zendesk / Jira Integration</td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>E-commerce (Shopify/Amazon)</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+      <tr><td>Public REST API</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="p">◑</span></td></tr>
+
+      <tr class="cat-row"><td colspan="7">Pricing &amp; Access</td></tr>
+      <tr><td>Free Tier Available</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span> 250 assets</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="y">✔</span> Limited</td></tr>
+      <tr><td>Transparent Public Pricing</td><td><span class="p">◑</span> Partial</td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td><td><span class="y">✔</span></td></tr>
+      <tr><td>Non-licensed User Portal</td><td><span class="y">✔</span> My Work Assets</td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td><td><span class="n">✘</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="color:#475569;font-size:.75rem;margin-top:.6rem">◑ = Partial support &nbsp;|&nbsp; ✔ = Full support &nbsp;|&nbsp; ✘ = Not available (based on publicly available info)</p>
+</div>
+
+<!-- USPs & GAPS -->
+<div id="usps" class="section">
+  <h2>🏆 BarCloud USPs (Unique Selling Points)</h2>
+  <div class="cards">
+    <div class="card usp-card"><h4>🔗 True Inv. + Asset Unification</h4><p>The only platform combining full inventory management AND full asset tracking under one login, one dashboard, one cost. Competitors force you to buy two systems.</p></div>
+    <div class="card usp-card"><h4>♻️ Stock-to-Asset Reclassification</h4><p>Instantly converts a stock item into a tracked asset while preserving its ID history — unique lifecycle continuity no competitor offers.</p></div>
+    <div class="card usp-card"><h4>👤 My Work Assets Portal</h4><p>Non-licensed users can view, request, and report on their own assigned assets without a paid seat — lowers total cost for large orgs.</p></div>
+    <div class="card usp-card"><h4>🤖 BarCloud AI</h4><p>Integrated AI with demand forecasting, ML-based optimization, and a conversational interface to run queries and reports — rare in this market segment.</p></div>
+    <div class="card usp-card"><h4>🎙️ Voice Control (Mobile)</h4><p>Voice-driven mobile transactions — a first in the inventory/asset tracking space, reducing friction for warehouse and field workers.</p></div>
+    <div class="card usp-card"><h4>☁️ Flexible Deployment</h4><p>Rare cloud + on-premise + self-hosted flexibility. Most SaaS competitors are cloud-only, making BarCloud appealing to government and regulated industries.</p></div>
+    <div class="card usp-card"><h4>🔑 No Extra Hardware Needed</h4><p>Any iOS 6+ or Android 4+ device becomes a scanner — removes costly hardware purchasing barriers for rapid deployment.</p></div>
+    <div class="card usp-card"><h4>🏛️ Enterprise-Grade Configurability</h4><p>Every workflow, report, field, and permission level is configurable — designed for complex organizations in government, military, education, and logistics.</p></div>
+  </div>
+
+  <h2 style="margin-top:2rem">⚠️ Gaps &amp; Competitive Weaknesses</h2>
+  <div class="cards">
+    <div class="card gap-card"><h4>📡 No RFID Support</h4><p>EZO and Wasp AssetCloud support RFID bulk audits. BarCloud lacks RFID, a significant gap for high-volume warehouse operations needing fast sweeps.</p></div>
+    <div class="card gap-card"><h4>🌐 No GPS / Real-time Location</h4><p>Competitors like Samsara offer live GPS and geofencing. BarCloud has no real-time location tracking for assets in the field.</p></div>
+    <div class="card gap-card"><h4>📴 Limited Offline Mode</h4><p>Requires a stable internet connection. Fishbowl and some others offer stronger offline capabilities, which matters for remote worksites.</p></div>
+    <div class="card gap-card"><h4>🛒 No Recurring Reservations / Carts</h4><p>EZO's "carts" and recurring reservation workflows are superior for equipment-heavy organizations (AV, construction, labs). BarCloud lacks this.</p></div>
+    <div class="card gap-card"><h4>🛍️ No E-commerce Integration</h4><p>No native Shopify, Amazon, or WooCommerce connectors — limits appeal for retail/e-commerce businesses vs. Zoho Inventory or Cin7.</p></div>
+    <div class="card gap-card"><h4>🎫 No Helpdesk Integration</h4><p>EZO and Asset Panda integrate with Zendesk and Jira for IT asset workflows. BarCloud has no native ITSM/helpdesk connectors.</p></div>
+    <div class="card gap-card"><h4>💸 Pricing Transparency</h4><p>Unlike competitors with fully public pricing, BarCloud's enterprise tiers require contacting sales, creating friction for self-serve buyers.</p></div>
+    <div class="card gap-card"><h4>🔒 No Free Tier</h4><p>AssetTiger is free for up to 250 assets; Sortly has a free plan. BarCloud has no free tier, which limits top-of-funnel adoption among SMBs and startups.</p></div>
+  </div>
+</div>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
